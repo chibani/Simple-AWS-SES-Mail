@@ -81,7 +81,13 @@ class SASMMail {
 
         $phpmailer->setFrom($email, $name);
 
-        $phpmailer->addAddress($to);
+        if(is_array($to)){
+            foreach ($to as $mail) {
+                $phpmailer->addAddress($mail);
+            }
+        }else{
+            $phpmailer->addAddress($to);
+        }
         
         $phpmailer->Subject = $subject;
         
@@ -90,11 +96,14 @@ class SASMMail {
         $phpmailer->AltBody = $message;
 
         if(!empty($attachments)){
+            if(!is_array($attachments)){
+                $attachments = [$attachments];
+            }
 
             foreach ($attachments as $attachment) {
-                
+        
                 $phpmailer->addAttachment($attachment);
-
+        
             }
 
         }

@@ -13,7 +13,7 @@ class SASMAdmin {
 
         add_action( 'init', array( $this, 'register_post_type' ), -1 );
 
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+		    add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 
         add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 
